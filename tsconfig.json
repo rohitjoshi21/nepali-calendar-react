@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "declaration": true,
-    "typeRoots": ["./dist/index.d.ts"],
+    "typeRoots": ["./dist/index.d.ts","./node_modules/@types"],
     "jsx": "react-jsx",
 
     /* Linting */
