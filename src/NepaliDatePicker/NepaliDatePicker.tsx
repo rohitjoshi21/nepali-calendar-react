@@ -19,7 +19,7 @@ import {
 import { childOf, executionDelegation, stitchDate } from './Utils/common';
 
 const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
-  const { className, inputClassName, value, onChange, onSelect, options } =
+  const { className, inputClassName, value, onChange, onSelect, options, disabled=false } =
     props;
 
   const nepaliDatePickerWrapper = useRef<HTMLDivElement>(null);
@@ -45,7 +45,11 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
   }, [options.calenderLocale]);
 
   useEffect(() => {
-    setDate(toEnglish(value || ADToBS(new Date())));
+    if (value) {
+      setDate(toEnglish(value));
+    } else {
+      setDate('');
+    }
   }, [value]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -110,7 +114,7 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
 
   const handleOnDaySelect = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (selectedDate:any) => {
+    (selectedDate: any) => {
       executionDelegation(
         () => {
           if (options.closeOnSelect) {
@@ -143,11 +147,25 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
         ref={nepaliDatePickerInput}
         className={inputClassName}
         readOnly={true}
+        placeholder='YYYY-MM-DD'
         value={numberTrans(date)}
-        onClick={() => setShowCalendar((visible) => !visible)}
+        onClick={() => {
+          if (!date) {
+            const todayDate = ADToBS(new Date());
+            setDate(todayDate);
+            if (onChange) {
+              onChange(returnDateValue(todayDate));
+            }
+          }
+          setShowCalendar((visible) => !visible);
+        }}
+        disabled={disabled}
       />
-      {showCalendar && date && (
-        <Calender value={date} events={datepickerEvents} />
+      {showCalendar && (
+        <Calender
+          value={date || ADToBS(new Date())}
+          events={datepickerEvents}
+        />
       )}
     </div>
   );

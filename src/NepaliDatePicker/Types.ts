@@ -29,6 +29,7 @@ export interface INepaliDatePicker {
   options: NepaliDatePickerOptions;
   minYear?: number;
   maxYear?: number;
+  disabled?: boolean;
 }
 
 export interface NepaliDatePickerProps {
@@ -44,6 +45,7 @@ export interface NepaliDatePickerProps {
   };
   minYear?: INepaliDatePicker['minYear'];
   maxYear?: INepaliDatePicker['maxYear'];
+  disabled?: INepaliDatePicker['disabled'];
 }
 
 export interface NepaliDatepickerEvents {
