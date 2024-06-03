@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "bikram-sambat-js": "^1.0.1",
+    "nepali-datetime": "^1.2.1",
     "nepali-number": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

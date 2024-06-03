@@ -52,7 +52,6 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
     }
   }, [value]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleClickOutside = useCallback((event: any) => {
     if (
       nepaliDatePickerWrapper.current &&
@@ -113,7 +112,6 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
   );
 
   const handleOnDaySelect = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (selectedDate: any) => {
       executionDelegation(
         () => {

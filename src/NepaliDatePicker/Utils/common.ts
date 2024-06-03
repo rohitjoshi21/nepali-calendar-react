@@ -1,4 +1,4 @@
-import { BSToAD } from 'bikram-sambat-js';
+// import { BSToAD } from 'bikram-sambat-js';
 import { CalenderData } from '../Config';
 import { BS, ParsedDate, SplittedDate, voidFunction } from '../Types';
 import {
@@ -9,6 +9,7 @@ import {
   validateBsMonth,
   validateBsYear,
 } from './DateValidation';
+import { NepaliToEnglish } from './dateConverter';
 
 export const range = (
   start: number,
@@ -105,6 +106,16 @@ export const getNumberOfDaysInBSMonth = (yearMonth: {
           CalenderData.bsMonthMaxDays[month - 1][bsMonthUpperDaysIndex] - 2
         );
       }
+       if ((year === 2081 && month === 2) || (year === 2081 && month === 12)) {
+         return (
+           CalenderData.bsMonthMaxDays[month - 1][bsMonthUpperDaysIndex] + 1
+         );
+       }
+       if ((year === 2081 && month === 11) || (year === 2081 && month === 3)) {
+         return (
+           CalenderData.bsMonthMaxDays[month - 1][bsMonthUpperDaysIndex] - 1
+         );
+       }
 
       return CalenderData.bsMonthMaxDays[month - 1][bsMonthUpperDaysIndex];
     },
@@ -120,9 +131,9 @@ export const parseBSDate = (
 
   validateDateObject({ year, month, day });
 
-  const adDate = new Date(BSToAD(date));
+  const adDate = new Date(NepaliToEnglish(date));
   const firstAdDateInBSMonth = new Date(
-    BSToAD(stitchDate({ year, month, day: 1 }, separator))
+    NepaliToEnglish(stitchDate({ year, month, day: 1 }, separator))
   );
   const numberOfDaysInMonth = getNumberOfDaysInBSMonth({ year, month });
 
