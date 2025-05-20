@@ -1,6 +1,6 @@
 {
   "name": "nepali-calendar-reactts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A Nepali calendar datepicker component",
   "author": "Rohit Joshi",
   "type": "module",
