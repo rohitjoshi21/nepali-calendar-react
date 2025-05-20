@@ -1,6 +1,10 @@
 {
   "name": "nepali-calendar-reactts",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohitjoshi21/nepali-calendar-react.git"
+  },
   "description": "A Nepali calendar datepicker component",
   "author": "Rohit Joshi",
   "type": "module",
