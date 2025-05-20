@@ -1,4 +1,3 @@
-import { ADToBS } from 'bikram-sambat-js';
 import {
   FunctionComponent,
   useCallback,
@@ -17,6 +16,7 @@ import {
   NepaliDatepickerEvents,
 } from './Types';
 import { childOf, executionDelegation, stitchDate } from './Utils/common';
+import { EnglishToNepali } from './Utils/dateConverter';
 
 const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
   const { className, inputClassName, value, onChange, onSelect, options, disabled=false } =
@@ -149,7 +149,7 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
         value={numberTrans(date)}
         onClick={() => {
           if (!date) {
-            const todayDate = ADToBS(new Date());
+            const todayDate = EnglishToNepali(new Date());
             setDate(todayDate);
             if (onChange) {
               onChange(returnDateValue(todayDate));
@@ -161,7 +161,7 @@ const NepaliDatePicker: FunctionComponent<INepaliDatePicker> = (props) => {
       />
       {showCalendar && (
         <Calender
-          value={date || ADToBS(new Date())}
+          value={date || EnglishToNepali(new Date())}
           events={datepickerEvents}
         />
       )}

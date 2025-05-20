@@ -1,8 +1,8 @@
 {
-  "name": "@romanpoudel/nepali-calender-reactts",
-  "private": false,
-  "description": "A datepicker component for Nepali Calender",
-  "version": "0.0.7",
+  "name": "nepali-calendar-reactts",
+  "version": "0.0.1",
+  "description": "A Nepali calendar datepicker component",
+  "author": "Rohit Joshi",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
@@ -29,8 +29,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bikram-sambat-js": "^1.0.1",
-    "nepali-datetime": "^1.2.1",
+    "nepali-datetime": "^1.4.1",
     "nepali-number": "^1.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

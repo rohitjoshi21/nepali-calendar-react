@@ -1,4 +1,3 @@
-import { ADToBS } from 'bikram-sambat-js';
 import { FunctionComponent, useCallback, useMemo } from 'react';
 import { CalenderData, useConfig } from '../../../Config';
 import { useTrans } from '../../../Locale';
@@ -8,6 +7,7 @@ import {
   range,
   splitDate,
 } from '../../../Utils/common';
+import { EnglishToNepali } from '../../../Utils/dateConverter';
 
 interface DayPickerBodyProps {
   selectedDate: ParsedDate;
@@ -74,7 +74,7 @@ const DayPickerBody: FunctionComponent<DayPickerBodyProps> = ({
         isCurrentMonth = false;
       }
 
-      const today = splitDate(ADToBS(new Date()));
+      const today = splitDate(EnglishToNepali(new Date()));
 
       const isToday = isCurrentMonth
         ? today.day === day &&

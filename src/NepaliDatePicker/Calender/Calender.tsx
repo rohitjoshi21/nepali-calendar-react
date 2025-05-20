@@ -1,4 +1,3 @@
-import { ADToBS } from 'bikram-sambat-js';
 import {
   Fragment,
   FunctionComponent,
@@ -6,6 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { useConfig } from '../Config';
 import {
   NepaliDatepickerEvents,
   ParsedDate,
@@ -13,9 +13,9 @@ import {
   SplittedDate,
 } from '../Types';
 import { executionDelegation, parseBSDate, stitchDate } from '../Utils/common';
+import { EnglishToNepali } from '../Utils/dateConverter';
 import CalenderController from './components/CalenderController';
 import { DayPicker } from './components/DayPicker';
-import { useConfig } from '../Config';
 
 interface CalenderProps {
   value: string;
@@ -128,7 +128,7 @@ const Calender: FunctionComponent<CalenderProps> = ({ value, events }) => {
   }, []);
 
   const onTodayClickHandler = useCallback(() => {
-    const today = parseBSDate(ADToBS(new Date()));
+    const today = parseBSDate(EnglishToNepali(new Date()));
 
     executionDelegation(
       () => {

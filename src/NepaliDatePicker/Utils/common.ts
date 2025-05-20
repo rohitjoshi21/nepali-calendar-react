@@ -1,4 +1,3 @@
-// import { BSToAD } from 'bikram-sambat-js';
 import { CalenderData } from '../Config';
 import { BS, ParsedDate, SplittedDate, voidFunction } from '../Types';
 import {
